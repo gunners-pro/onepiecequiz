@@ -62,13 +62,16 @@ export const Widget: any = styled.div`
   background-color: ${({ theme }) => theme.colors.mainBg};
   border-radius: 4px;
   overflow: hidden;
-  &.h1, h2, h3 {
+
+
+  & > h1, h2, h3 {
     font-size: 16px;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 0;
+    margin-top: 24px;
+    margin-left: 32px;
   }
-  &.p {
+  & > p {
     font-size: 14px;
     font-weight: 400;
     line-height: 1;
