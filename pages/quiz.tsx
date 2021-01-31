@@ -1,9 +1,52 @@
+/* eslint-disable indent */
 import React, {
   Dispatch, SetStateAction, useEffect, useState,
 } from 'react';
 import { Container, QuizContainer, Widget } from '../styles/pages/quiz';
 import db from '../db.json';
 import QuestionWidget from '../src/components/QuestionWidget';
+
+interface IResultProps {
+  results: boolean[];
+}
+
+const ResultWidget: React.FC<IResultProps> = ({ results }) => (
+  <Widget>
+    <Widget.Header>
+      Resultado
+    </Widget.Header>
+    <Widget.Content>
+      <p>
+        Você acertou
+        {' '}
+        {/* {result.reduce((acc, resultAtual) => {
+          const isRight = resultAtual === true;
+          if (isRight) {
+            return acc + 1;
+          }
+          return acc;
+        }, 0)} */}
+        {results.filter((result) => result).length}
+        {' '}
+        perguntas
+      </p>
+      <ul>
+        {
+          results.map((result, index) => (
+            <li key={`index_${index + 1}`}>
+              #
+              {index + 1}
+              {' '}
+              Resultado:
+              {' '}
+              {result ? 'Acertou' : 'Errou'}
+            </li>
+          ))
+        }
+      </ul>
+    </Widget.Content>
+  </Widget>
+);
 
 function LoadingWidget() {
   return (
@@ -40,9 +83,14 @@ const screenStates = {
 
 const Quiz: React.FC = () => {
   const [screenState, setScreenState] = useState(screenStates.LOADING);
+  const [results, setResults] = useState([]);
   const totalQuestions = db.questions.length;
   const [questionIndex, setQuestionIndex] = useState(0);
   const question = db.questions[questionIndex];
+
+  function addResult(result: boolean) {
+    setResults([...results, result]);
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -66,13 +114,14 @@ const Quiz: React.FC = () => {
                   handleSubmitQuiz(setQuestionIndex, questionIndex, totalQuestions, setScreenState);
                 }
               }
+              addResult={addResult}
             />
           )
         }
 
-        {screenState === screenStates.LOADING && (<LoadingWidget />)}
+        {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && <div>Voce acertou x questões, parabéns</div>}
+        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
 
       </QuizContainer>
     </Container>
