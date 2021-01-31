@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { Container, QuizContainer, Widget } from '../../styles/pages/quiz';
 import db from '../../db.json';
 import QuestionWidget from '../../src/components/QuestionWidget';
+import Link from '../../src/components/Link';
 
 interface IResultProps {
   results: boolean[];
@@ -24,13 +25,6 @@ const ResultWidget: React.FC<IResultProps> = ({ results }) => {
         <p>
           Você acertou
           {' '}
-          {/* {result.reduce((acc, resultAtual) => {
-          const isRight = resultAtual === true;
-          if (isRight) {
-            return acc + 1;
-          }
-          return acc;
-        }, 0)} */}
           {results.filter((result) => result).length}
           {' '}
           perguntas
@@ -41,17 +35,20 @@ const ResultWidget: React.FC<IResultProps> = ({ results }) => {
           {
             results.map((result, index) => (
               <li key={`index_${index + 1}`}>
-                #
+
+                Questão
+                {' '}
                 {index + 1}
-                {' '}
-              Resultado:
-                {' '}
+                {': '}
                 {result ? 'Acertou' : 'Errou'}
               </li>
             ))
           }
         </ul>
       </Widget.Content>
+      <Widget.Topic as={Link} href="/">
+        Voltar Para Página Inicial
+      </Widget.Topic>
     </Widget>
   );
 };

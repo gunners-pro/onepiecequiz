@@ -4,25 +4,63 @@
   "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
+      "image": "https://media4.giphy.com/media/tuCFp8rod0x3O/giphy.gif?cid=ecf05e47nu92o0tqp9nqmhapp78tuu2ktguwexkxbehqr4qj&rid=giphy.gif",
+      "title": "Qual a comida preferida de Luffy?",
       "description": "Essa é pra aquecer",
       "answer": 2,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Mariscos",
+        "Torta",
+        "Carne",
+        "Yakisoba"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "https://media4.giphy.com/media/LvtxIRg1Ly96E/giphy.gif",
+      "title": "Qual local no navio é o favorito de Luffy?",
+      "description": "Fácil, extremamente fácil",
       "answer": 0,
       "alternatives": [
-        "background: linear-gradient(#e66465, #9198e5);",
-        "background: gradient(#e66465, #9198e5);"
+        "Cabeça do Sunny",
+        "Cozinha",
+        "Timão",
+        "Gavia"
+      ]
+    },
+    {
+      "image": "https://media0.giphy.com/media/OlM1nq85xO6Fq/giphy.gif?cid=ecf05e474o9ve23640ffrfaqhrbpqjird8pmt4gj3ubieej4&rid=giphy.gif",
+      "title": "Qual Akuma no mi de Brook?",
+      "description": "Ta ficando dificil.",
+      "answer": 1,
+      "alternatives": [
+        "Goro-Goro no mi",
+        "Yomi-Yomi no mi",
+        "Gomu-Gomu no mi",
+        "Bara-Bara no mi"
+      ]
+    },
+    {
+      "image": "https://media4.giphy.com/media/Ai8iZqHx2i0fK/giphy.gif?cid=ecf05e47e9c1c9d7fa065c1848962184f35684c9ec7146ad&rid=giphy.gif",
+      "title": "Qual dos seguintes Mugiwaras já morreu na obra?",
+      "description": "Humm, eita.",
+      "answer": 3,
+      "alternatives": [
+        "Zoro",
+        "Ussop",
+        "Jinbei",
+        "Brook"
+      ]
+    },
+    {
+      "image": "https://media4.giphy.com/media/3oKIPqhotPCujLrKJG/giphy.gif?cid=ecf05e478d8c65ea4a823b688c63b3e9d632821da63b8cf6&rid=giphy.gif",
+      "title": "Donquixote Don Flamingo nasceu em que local?",
+      "description": "Agora dificultou",
+      "answer": 1,
+      "alternatives": [
+        "Wano",
+        "Mariejois",
+        "Alabasta",
+        "Laugh Tale"
       ]
     }
   ],
