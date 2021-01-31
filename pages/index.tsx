@@ -90,7 +90,7 @@ const Home = () => {
           animate="show"
         />
       </QuizContainer>
-      <GithubCorner projectUrl="http://github.com/gunners-pro" />
+      <GithubCorner projectUrl="https://github.com/gunners-pro/onepiecequiz" />
 
     </Container>
   );
