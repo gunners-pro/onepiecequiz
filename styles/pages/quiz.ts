@@ -5,16 +5,14 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background-size: cover;
-  background-blend-mode: soft-light;
   display: flex;
   height: 100vh;
   flex-direction: column;
-  align-items: flex-end;
-
+  align-items: center;
   width: 100%;
   background-size: cover;
   background-position: center;
+  background-blend-mode: soft-light;
   background-image: url(${({ backgroundImage }) => backgroundImage});
   background-color: ${({ theme }) => theme.colors.mainBg};
   flex: 1;
@@ -23,7 +21,7 @@ export const Container = styled.div<ContainerProps>`
     &:after {
       content: "";
       background-size: cover;
-    background-position: center;
+      background-position: center;
       background-image:
         linear-gradient(transparent, ${({ theme }) => theme.colors.mainBg}),
         url(${({ backgroundImage }) => backgroundImage});
@@ -47,8 +45,12 @@ export const QuizContainer = styled.div`
   width: 100%;
   height: 100%;
   max-width: 350px;
-  padding-top: 45px;
   margin: auto 10%;
+
+  & > h1 {
+    margin: 8px 0 8px;
+  }
+
   @media screen and (max-width: 500px) {
     margin: auto;
     padding: 15px
