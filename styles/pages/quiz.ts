@@ -6,6 +6,7 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   background-size: cover;
+  background-blend-mode: soft-light;
   display: flex;
   height: 100vh;
   flex-direction: column;

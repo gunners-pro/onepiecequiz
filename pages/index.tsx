@@ -5,6 +5,7 @@ import { Container, QuizContainer, Widget } from '../styles/pages/index';
 import FooterWrapper from '../src/components/Footer';
 import GithubCorner from '../src/components/GithubCorner';
 import Input from '../src/components/Input';
+import ButtonPlay from '../src/components/Button';
 
 const Home = () => {
   const router = useRouter();
@@ -27,11 +28,9 @@ const Home = () => {
           <Widget.Content>
             <form onSubmit={(event) => sendToPageQuiz(event)}>
               <Input onChange={(event) => setName(event.target.value)} placeholder="Diz aí seu nome" />
-              <button type="submit" disabled={name.length === 0}>
-                Jogar
-                {' '}
-                {name}
-              </button>
+              <ButtonPlay type="submit" disabled={name.length === 0}>
+                {`Jogar ${name}`}
+              </ButtonPlay>
             </form>
           </Widget.Content>
         </Widget>

@@ -8,6 +8,7 @@ const Footer = () => (
     </a>
     <p>
       Orgulhosamente criado durante a
+      {' '}
       <a href="https://www.alura.com.br"><span>Imersão React da Alura</span></a>
     </p>
   </FooterWrapper>
