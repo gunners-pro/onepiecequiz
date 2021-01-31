@@ -1,6 +1,8 @@
 import React, { FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from '../src/components/Link';
 import { Container, QuizContainer, Widget } from '../styles/pages/index';
+import db from '../db.json';
 
 import FooterWrapper from '../src/components/Footer';
 import GithubCorner from '../src/components/GithubCorner';
@@ -13,17 +15,16 @@ const Home = () => {
 
   function sendToPageQuiz(event: FormEvent) {
     event.preventDefault();
-    router.push(`/quiz?name=${name}`);
+    router.push({ pathname: '/quiz', query: { name } });
   }
 
   return (
     <Container backgroundImage="../../background.jpg">
 
       <QuizContainer>
-        <h1>One Piece Quiz</h1>
         <Widget>
           <Widget.Header>
-            <h1>One Piece</h1>
+            <h1>One Piece Quiz</h1>
           </Widget.Header>
           <Widget.Content>
             <form onSubmit={(event) => sendToPageQuiz(event)}>
@@ -38,7 +39,25 @@ const Home = () => {
         <Widget>
           <h1>Quizes da Galera</h1>
           <Widget.Content>
-            <p>lorem ipsum dolor sit amet....</p>
+            <ul>
+              {
+                db.external.map((item, index) => {
+                  const [projectName, githubUser] = item
+                    .replace(/\//g, '')
+                    .replace('https:', '')
+                    .replace('.vercel.app', '')
+                    .split('.');
+
+                  return (
+                    <li key={`link__${index.toString()}`}>
+                      <Widget.Topic as={Link} href={`/quiz/${projectName}___${githubUser}`}>
+                        {`${githubUser}/${projectName}`}
+                      </Widget.Topic>
+                    </li>
+                  );
+                })
+              }
+            </ul>
           </Widget.Content>
         </Widget>
         <FooterWrapper />

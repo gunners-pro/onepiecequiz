@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '../Button';
 import AlternativesForm from '../AlternativesForm';
 import { Widget } from '../../../styles/components/QuestionWidget/styles';
+import BackLinkArrow from '../BackLinkArrow';
 
 interface IQuestions {
   question: {
@@ -30,6 +31,7 @@ const QuestionWidget: React.FC<IQuestions> = ({
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>

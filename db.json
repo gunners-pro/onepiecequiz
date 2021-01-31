@@ -27,7 +27,8 @@
     }
   ],
   "external": [
-    ""
+    "https://narutoquiz-base.vitor-kb.vercel.app/",
+    "https://tw3-quiz.lucas98fernando.vercel.app/"
   ],
   "theme": {
     "colors": {

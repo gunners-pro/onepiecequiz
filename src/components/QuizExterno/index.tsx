@@ -1,52 +1,70 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 import React, {
   Dispatch, SetStateAction, useEffect, useState,
 } from 'react';
-import { Container, QuizContainer, Widget } from '../styles/pages/quiz';
-import db from '../db.json';
-import QuestionWidget from '../src/components/QuestionWidget';
+import { useRouter } from 'next/router';
+import { Container, QuizContainer, Widget } from '../../../styles/pages/quiz';
+import QuestionWidget from '../QuestionWidget';
 
 interface IResultProps {
   results: boolean[];
 }
 
-const ResultWidget: React.FC<IResultProps> = ({ results }) => (
-  <Widget>
-    <Widget.Header>
-      Resultado
-    </Widget.Header>
-    <Widget.Content>
-      <p>
-        Você acertou
-        {' '}
-        {/* {result.reduce((acc, resultAtual) => {
+interface IQuizExterno {
+  externalQuestions: {
+    image: string;
+    title: string;
+    description: string;
+    answer: number;
+    alternatives: string[];
+  }[];
+  externalBg: string;
+}
+
+const ResultWidget: React.FC<IResultProps> = ({ results }) => {
+  const router = useRouter();
+
+  return (
+    <Widget>
+      <Widget.Header>
+        Resultado
+      </Widget.Header>
+      <Widget.Content>
+        <p>
+          Você acertou
+          {' '}
+          {/* {result.reduce((acc, resultAtual) => {
           const isRight = resultAtual === true;
           if (isRight) {
             return acc + 1;
           }
           return acc;
         }, 0)} */}
-        {results.filter((result) => result).length}
-        {' '}
-        perguntas
-      </p>
-      <ul>
-        {
-          results.map((result, index) => (
-            <li key={`index_${index + 1}`}>
-              #
-              {index + 1}
-              {' '}
+          {results.filter((result) => result).length}
+          {' '}
+          perguntas
+          {' '}
+          {router.query.name}
+        </p>
+        <ul>
+          {
+            results.map((result, index) => (
+              <li key={`index_${index + 1}`}>
+                #
+                {index + 1}
+                {' '}
               Resultado:
-              {' '}
-              {result ? 'Acertou' : 'Errou'}
-            </li>
-          ))
-        }
-      </ul>
-    </Widget.Content>
-  </Widget>
-);
+                {' '}
+                {result ? 'Acertou' : 'Errou'}
+              </li>
+            ))
+          }
+        </ul>
+      </Widget.Content>
+    </Widget>
+  );
+};
 
 function LoadingWidget() {
   return (
@@ -81,12 +99,12 @@ const screenStates = {
   RESULT: 'RESULT',
 };
 
-const Quiz: React.FC = () => {
+const QuizExterno: React.FC<IQuizExterno> = ({ externalQuestions, externalBg }) => {
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const [results, setResults] = useState([]);
-  const totalQuestions = db.questions.length;
+  const totalQuestions = externalQuestions.length;
   const [questionIndex, setQuestionIndex] = useState(0);
-  const question = db.questions[questionIndex];
+  const question = externalQuestions[questionIndex];
 
   function addResult(result: boolean) {
     setResults([...results, result]);
@@ -99,7 +117,7 @@ const Quiz: React.FC = () => {
   }, []);
 
   return (
-    <Container backgroundImage="../../bg2.jpg">
+    <Container backgroundImage={externalBg}>
       <QuizContainer>
         <h1>One Piece Quiz</h1>
 
@@ -128,4 +146,4 @@ const Quiz: React.FC = () => {
   );
 };
 
-export default Quiz;
+export default QuizExterno;
